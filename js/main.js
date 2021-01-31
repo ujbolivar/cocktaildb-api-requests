@@ -9,9 +9,11 @@ function getCocktail() {
     fetch(url)
     .then(response => response.json())
     .then(data => {
-        //console.log(data.drinks[0]);
-        document.querySelector('h2').innerText = data.drinks[0].strDrink;
-        document.querySelector('img').src = data.drinks[0].strDrinkThumb;
-        document.querySelector('h3').innerText = data.drinks[0].strInstructions;
+        console.log(data.drinks);
+        for (let i = 0; i < data.drinks.length; i++) {
+            const image = document.createElement('img');
+            document.querySelector("#slide-" + (i+1)).innerHTML = `
+            <img src=${data.drinks[i].strDrinkThumb}> alt="">`;
+        }
     })
 }
